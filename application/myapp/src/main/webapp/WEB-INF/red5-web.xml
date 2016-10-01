@@ -30,7 +30,7 @@
 	<!--
 	Defines the web handler which acts as an applications endpoint
 	-->
-	<bean id="web.handler" class="org.red5.core.Application" />
+	<bean id="web.handler" class="com.flashvisions.red5.sobridge.Application" />
 	
 	
 	
@@ -42,9 +42,11 @@
         <property name="path" value="default" />
         <property name="listeners">
             <list>
-                <bean id="defaultListener" class="org.red5.core.WebSocketSessionHandler">
+                <bean id="defaultListener" class="com.flashvisions.red5.sobridge.WebSocketSessionHandler">
                 	<property name="applicationAdapter">
-                		<bean id="wsAdapter" class="org.red5.core.WebSocketApplicationAdapter" />
+                		<bean id="wsAdapter" class="com.flashvisions.red5.sobridge.WebSocketApplicationAdapter">
+                			<property name="handler" ref="web.handler" />
+                		</bean>
                 	</property>
                 </bean>
             </list>
